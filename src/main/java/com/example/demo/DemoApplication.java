@@ -11,3 +11,5 @@ public class DemoApplication {
 	}
 
 }
+
+//New Project Build with only Spring and React and Java, no JHipster
