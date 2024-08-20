@@ -49,7 +49,7 @@ public class UserServiceUnitTests {
         String mockUserName = "Username";
         String mockPassword = "Qq!1";
 
-        User mockUser = new User(mockFirstName, mockLastName, mockEmail, mockUserName, mockPassword, null);
+        User mockUser = new User(mockFirstName, mockLastName, mockEmail, mockUserName, mockPassword);
         mockUser.setUserId(mockId);
 
         Mockito.when(userRepository.findById(mockId)).thenReturn(Optional.of(mockUser));
