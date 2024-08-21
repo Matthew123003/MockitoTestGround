@@ -8,6 +8,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import Models.User;
 import Repositories.UserRepository;
 import Services.UserService;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Optional;
 import org.junit.Assert;
 import org.junit.Test;
@@ -115,11 +117,25 @@ public class UserServiceUnitTests {
         String mockUserName = "Username";
 
         Mockito.when(userRepository.findByUsername(mockUserName)).thenReturn(new User());
-        Mockito.doNothing().when(userRepository).deleteByUserName(mockUserName);
+        Mockito.doNothing().when(userRepository).findByUsername(mockUserName);
 
         boolean isDeleted = userService.deleteByUserName(mockUserName);
 
         Assert.assertTrue(isDeleted);
+    }
+
+    @Test
+    public void whenFindAllUsers_thenReturnUserList() {
+        List<User> mockUsers = new ArrayList<>();
+        mockUsers.add(new User("FirstName1", "LastName1", "email1@example.com", "user1", "password1"));
+        mockUsers.add(new User("FirstName2", "LastName2", "email2@example.com", "user2", "password2"));
+
+        Mockito.when(userRepository.findAll()).thenReturn(mockUsers);
+
+        List<User> result = userService.findAll();
+
+        Assert.assertNotNull(result);
+        Assert.assertEquals(2, result.size());
     }
 
     
