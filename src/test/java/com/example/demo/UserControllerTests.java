@@ -35,7 +35,7 @@ public class UserControllerTests {
         MockitoAnnotations.openMocks(this); // Initialize mocks before each test
     }
 
-    @Test
+    @Test 
     public void testGetAllUsers() {
         List<User> mockUsers = new ArrayList<>();
         User user1 = new User(1L, "FirstName1", "LastName1", "email1@example.com", "user1", "password1");
