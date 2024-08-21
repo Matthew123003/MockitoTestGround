@@ -4,8 +4,9 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.ArrayList;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+//import org.junit.jupiter.api.BeforeEach;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -30,7 +31,7 @@ public class UserControllerTests {
     @InjectMocks
     private UserController userController; // Inject the mock into the UserController
 
-    @BeforeEach
+    @Before
     public void setUp() {
         MockitoAnnotations.openMocks(this); // Initialize mocks before each test
     }
