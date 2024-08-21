@@ -37,17 +37,17 @@ public class UserControllerTests {
 
     @Test
     public void testGetAllUsers() {
-        // Arrange
-        List<User> mockUsers = Arrays.asList(
-            new User(1L, "FirstName1", "LastName1", "email1@example.com", "user1", "password1"),
-            new User(2L, "FirstName2", "LastName2", "email2@example.com", "user2", "password2")
-        );
+        List<User> mockUsers = new ArrayList<>();
+        User user1 = new User(1L, "FirstName1", "LastName1", "email1@example.com", "user1", "password1");
+        User user2 = new User(2L, "FirstName2", "LastName2", "email2@example.com", "user2", "password2");
+        mockUsers.add(user1);
+        mockUsers.add(user2);
         when(userService.findAll()).thenReturn(mockUsers);
 
-        // Act
+        
         ResponseEntity<List<User>> response = userController.getAllUsers();
 
-        // Assert
+        
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(mockUsers.size(), response.getBody().size());
         Assert.assertEquals(mockUsers, response.getBody());
@@ -55,15 +55,14 @@ public class UserControllerTests {
 
     @Test
     public void testGetUserById() {
-        // Arrange
         Long userId = 1L;
         User mockUser = new User(userId, "FirstName", "LastName", "email@example.com", "user", "password");
         when(userService.findById(userId)).thenReturn(mockUser);
 
-        // Act
+        
         ResponseEntity<User> response = userController.getUserById(userId);
 
-        // Assert
+        
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertEquals(mockUser, response.getBody());
     }
