@@ -110,6 +110,18 @@ public class UserServiceUnitTests {
         Assert.assertTrue(isDeleted);
     }
 
+    @Test
+    public void whenUserIsDeletedByUsername_thenReturnTrue() {
+        String mockUserName = "Username";
+
+        Mockito.when(userRepository.findByUsername(mockUserName)).thenReturn(new User());
+        Mockito.doNothing().when(userRepository).deleteByUserName(mockUserName);
+
+        boolean isDeleted = userService.deleteByUserName(mockUserName);
+
+        Assert.assertTrue(isDeleted);
+    }
+
     
 
 }
