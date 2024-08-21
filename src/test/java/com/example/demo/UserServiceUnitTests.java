@@ -64,5 +64,17 @@ public class UserServiceUnitTests {
         Assert.assertEquals(mockPassword, retrievedUser.getPassword());
     }
 
+    @Test
+    public void whenNewUserIsProvided_thenUserIsCreated() {
+        User mockUser = new User("FirstName", "LastName", "Email@email.email", "Username", "Qq!1");
+
+        Mockito.when(userRepository.save(mockUser)).thenReturn(mockUser);
+
+        User createdUser = userService.create(mockUser);
+
+        Assert.assertNotNull(createdUser);
+        Assert.assertEquals(mockUser.getUserName(), createdUser.getUserName());
+    }
+
 }
 
