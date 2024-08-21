@@ -27,7 +27,7 @@ public class UserServiceUnitTests {
     @Autowired
     private UserService userService;
 
-    @Test
+    @Test // Test findByUsername
     public void whenUserNameIsProvided_thenRetrievedUserNameIsCorrect() {
         String mockUserName = "Username";
 
@@ -42,7 +42,7 @@ public class UserServiceUnitTests {
     }
 
 
-    @Test
+    @Test // Test findById
     public void whenUserIdIsProvided_thenRetrievedUserIsCorrect() {
         Long mockId = 2L;
         String mockFirstName = "FirstName";
@@ -66,7 +66,7 @@ public class UserServiceUnitTests {
         Assert.assertEquals(mockPassword, retrievedUser.getPassword());
     }
 
-    @Test
+    @Test // Test create method in User Service
     public void whenNewUserIsProvided_thenUserIsCreated() {
         User mockUser = new User("FirstName", "LastName", "Email@email.email", "Username", "Qq!1");
 
@@ -78,7 +78,7 @@ public class UserServiceUnitTests {
         Assert.assertEquals(mockUser.getUserName(), createdUser.getUserName());
     }
 
-    @Test
+    @Test // Test Update method in User Service
     public void whenUserIsUpdated_thenUserDetailsAreUpdated() {
         Long mockId = 2L;
         User existingUser = new User("OldFirstName", "OldLastName", "old.email@email.email", "OldUsername", "OldPassword");
@@ -100,7 +100,7 @@ public class UserServiceUnitTests {
         Assert.assertEquals(updatedUser.getPassword(), result.getPassword());
     }
 
-    @Test
+    @Test // Test deleteById method in User Service
     public void whenUserIsDeletedById_thenReturnTrue() {
         Long mockId = 2L;
 
@@ -112,7 +112,7 @@ public class UserServiceUnitTests {
         Assert.assertTrue(isDeleted);
     }
 
-    @Test
+    @Test // Test deleteByUsername method in User Service
     public void whenUserIsDeletedByUsername_thenReturnTrue() {
         String mockUserName = "Username";
 
@@ -124,7 +124,7 @@ public class UserServiceUnitTests {
         Assert.assertTrue(isDeleted);
     }
 
-    @Test
+    @Test // Test findAll method in User Service
     public void whenFindAllUsers_thenReturnUserList() {
         List<User> mockUsers = new ArrayList<>();
         mockUsers.add(new User("FirstName1", "LastName1", "email1@example.com", "user1", "password1"));
@@ -138,7 +138,7 @@ public class UserServiceUnitTests {
         Assert.assertEquals(2, result.size());
     }
 
-    @Test
+    @Test // Test optional user return in service
     public void whenUserIdDoesNotExist_thenReturnNull() {
         Long mockId = 99L;
 
@@ -149,7 +149,7 @@ public class UserServiceUnitTests {
         Assert.assertNull(result);
     }
 
-    @Test
+    @Test // test optional username return in service
     public void whenUserNameDoesNotExist_thenReturnNull() {
         String mockUserName = "NonExistentUser";
 
