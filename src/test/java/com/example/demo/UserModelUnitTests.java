@@ -56,5 +56,17 @@ public void testDefaultConstructor() {
     Assert.assertNull(user.getPassword());
 }
 
+@Test
+public void testAllArgsConstructor() {
+        User user = new User(1L, "John", "Doe", "john.doe@example.com", "johndoe", "password123");
+
+        // Ensure all fields are correctly initialized
+        Assert.assertEquals(1L, user.getUserId());
+        Assert.assertEquals("John", user.getfirstName());
+        Assert.assertEquals("Doe", user.getlastName());
+        Assert.assertEquals("john.doe@example.com", user.getEmail());
+        Assert.assertEquals("johndoe", user.getUserName());
+        Assert.assertEquals("password123", user.getPassword());
+    }
 }
 
