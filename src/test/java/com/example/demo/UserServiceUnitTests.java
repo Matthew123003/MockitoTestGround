@@ -98,6 +98,18 @@ public class UserServiceUnitTests {
         Assert.assertEquals(updatedUser.getPassword(), result.getPassword());
     }
 
+    @Test
+    public void whenUserIsDeletedById_thenReturnTrue() {
+        Long mockId = 2L;
+
+        Mockito.when(userRepository.existsById(mockId)).thenReturn(true);
+        Mockito.doNothing().when(userRepository).deleteById(mockId);
+
+        boolean isDeleted = userService.deleteById(mockId);
+
+        Assert.assertTrue(isDeleted);
+    }
+
     
 
 }
