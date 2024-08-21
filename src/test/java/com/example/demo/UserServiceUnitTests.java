@@ -138,7 +138,27 @@ public class UserServiceUnitTests {
         Assert.assertEquals(2, result.size());
     }
 
-    
+    @Test
+    public void whenUserIdDoesNotExist_thenReturnNull() {
+        Long mockId = 99L;
+
+        Mockito.when(userRepository.findById(mockId)).thenReturn(Optional.empty());
+
+        User result = userService.findById(mockId);
+
+        Assert.assertNull(result);
+    }
+
+    @Test
+    public void whenUserNameDoesNotExist_thenReturnNull() {
+        String mockUserName = "NonExistentUser";
+
+        Mockito.when(userRepository.findByUsername(mockUserName)).thenReturn(null);
+
+        User result = userService.findByUserName(mockUserName);
+
+        Assert.assertNull(result);
+    }
 
 }
 
